@@ -1,0 +1,28 @@
+<div class="container color-dark">
+  <div class="col">
+    <p>Add something</p>
+  </div>
+  <div class="col">
+    <p>your something 
+      <!-- ({{itemCount}}) is an interpolation , get content value-->
+      ({{itemCount}})</p>
+  </div>
+</div>
+<div class="container color-light" [@somethings]="somethings.length">
+  <div class="col">
+    <p class="sm">Use this form below the add something</p>
+    <form >
+      <!-- binding two data bindin with [()], one data binding with [] -->
+      <input type="text" class="txt" name="something" placeholder="somethings" [(ngModel)]="somethingText">
+
+      <!-- One way data binding , one interaction kenet value="{{btnText}}" === w walet [value]="btnText" -->
+      <input type="submit" class="btn" [value]="btnText" (click)="addSomething()">
+
+    </form>
+  </div>
+  <div class="col">
+    <p class="something-container" *ngFor="let something of somethings; let i = index" (click)="removeSomething(i)">
+      {{something}}
+    </p>
+  </div>
+</div>
